@@ -53,8 +53,7 @@
   <header class="bg-white w-screen flex h-16 p-4 flex-row flex-nowrap sticky top-0 z-40">
     <div class="flex-row flex flex-nowrap flex-1 items-center justify-start">
       <svg id="btn_mobile_menu" width="16" height="15" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="#69707D"
-          fill-rule="evenodd" />
+        <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="#69707D" fill-rule="evenodd" />
       </svg>
       <h1 class="text-2xl px-5 ">SNEAKERS</h1>
     </div>
@@ -72,14 +71,38 @@
   <!-- Header  -->
   <!-- Main -->
   <main class="pb-9">
+
     <!-- Cart -->
-    <div id="cart_bg" class="w-screen h-screen bg-black z-40 absolute top-0 opacity-40 hidden">
+    <div id="cart_bg" class="w-screen h-screen bg-black z-40 absolute top-0 opacity-40 ">
     </div>
-    <div id="cart" class="absolute z-50  flex-col w-3/4 h-1/3 bg-white ml-[12.5%] mt-5 rounded-3xl p-8 hidden">
-      <h1 class="font-semibold py-5 italic">Cart</h1>
-      <div class="border-t-2 flex justify-center items-center h-3/4">
-        <h1 class="text-xl font-semibold">Your cart is Empty.</h1>
+    <div id="cart" class="absolute z-50  flex-col w-[80%] h-1/3 bg-white ml-[12.5%] mt-5 rounded-3xl p-8 pb-0 ">
+      <h1 class="font-semibold py-5 italic border-b-2">Cart</h1>
+      <!-- Empty Cart -->
+      <div id="cartEmpty" class=" flex justify-center items-center h-3/4 hidden">
+        <h1 class="text-xl font-semibold ">Your cart is Empty.</h1>
       </div>
+      <!-- Empty Cart -->
+      <!-- Full Cart -->
+      <div id="CartFull" class="flex h-3/4 flex-col items-start justify-start pt-9">
+        <div class="flex justify-evenly w-[100%] items-center">
+          <div class="w-16 h-16 rounded-full"><img src="images\image-product-1-thumbnail.jpg"></div>
+          <div>
+            <h1 class="text-xl font-normal">Atumn Limited Edition..</h1>
+            <h1 class="text-lg font-light flex justify-between">$125x 3<p class="font-bold">$375.00</p>
+            </h1>
+          </div>
+          <svg width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path
+                d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z"
+                id="a" />
+            </defs>
+            <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
+          </svg>
+        </div>
+        <button class="w-[100%] h-[100%] my-9 bg-orange-600 rounded-3xl font-bold text-white text-xl">Chekout</button>
+      </div>
+      <!-- Full Cart -->
     </div>
     <!-- Cart -->
     <!-- Images -->

@@ -82,5 +82,8 @@ closeCartBtn.addEventListener('click', () => {
     }
 });
 // functionallity of Cart UI
+//
+// Functionallity of cart
 
+// Functionality of cart
 
