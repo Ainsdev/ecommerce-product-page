@@ -71,11 +71,6 @@ function hidden() {
     };
 }
 
-cartbtn.addEventListener('click', () => {
-    if (cart.classList.contains('hidden') == true) {
-        return removeHidden();
-    }
-});
 closeCartBtn.addEventListener('click', () => {
     if (cart.classList.contains('hidden') == false) {
         return hidden();
@@ -84,6 +79,54 @@ closeCartBtn.addEventListener('click', () => {
 // functionallity of Cart UI
 //
 // Functionallity of cart
-
+let index = 0;
+const indexCart = document.getElementById('cart_index');
+const addItem = document.getElementById('btn_cart_add');
+const removeItem = document.getElementById('btn_cart_remove');
+const btnAddCart = document.getElementById('btn_addtoCart');
+let defCart = 0;
+const cartEmpty = document.getElementById('cartEmpty');
+addItem.addEventListener('click', () => {
+    if (index >= 0) {
+        index++;
+        indexCart.innerHTML = index;
+    }
+});
+removeItem.addEventListener('click', () => {
+    if (index > 0) {
+        index--;
+        indexCart.innerHTML = index;
+    }
+});
+btnAddCart.addEventListener('click', () => {
+    addToCart();
+});
+const addToCart = () => {
+    defCart = index;
+    index = 0;
+    indexCart.innerHTML = index;
+};
+cartbtn.addEventListener('click', () => {
+    if (cart.classList.contains('hidden') == true && defCart == 0) {
+        return removeHidden();
+    } else if (cart.classList.contains('hidden') == true && defCart > 0) {
+        return removeHiddenWithItems();
+    }
+});
+function removeHiddenWithItems() {
+    return {
+        first: cart.classList.remove('hidden'),
+        second: closeCartBtn.classList.remove('hidden'),
+        third: cartEmpty.classList.add('hidden'),
+        fourth: showItems(),
+    };
+}
+const itemsCount = document.getElementById('itemsCount');
+const totalCount = document.getElementById('totalCount');
+const showItems = () => {
+    document.getElementById('CartFull').classList.remove('hidden');
+    itemsCount.innerHTML = `$125x ${defCart}`;
+    totalCount.innerHTML = `$${defCart * 125}.00`;
+}
 // Functionality of cart
 
