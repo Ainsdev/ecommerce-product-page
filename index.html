@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth ">
+<html lang="en" class="scroll-mdooth ">
 
 <head>
   <meta charset="UTF-8">
@@ -15,11 +15,17 @@
         extend: {
           colors: {
             'seagreen': '#03B5AA',
-            'smoky': '#E5D4CE',
+            'mdoky': '#E5D4CE',
             'blackson': '#0D0A0B',
             'blue': '#4A8FE7',
             'yellow': '#EEE82C',
-          }
+          },
+          screens: {
+            'sm': '640px',
+            'md': '800px',
+            'lg': '1024px',
+            'xl': '1280px',
+          },
         },
       },
     }
@@ -27,7 +33,7 @@
   <script defer src="app.js"></script>
 </head>
 
-<body>
+<body class="md:bg-mdoky">
   <!-- Mobile Menu -->
   <div id="mobile_menu" class="flex top-0 h-screen w-screen absolute z-50 hidden ease-in-out">
     <div class="h-screen w-2/3 bg-white flex flex-col px-7 pt-7">
@@ -50,14 +56,26 @@
   </div>
   <!-- Mobile Menu -->
   <!-- Header  -->
-  <header class="bg-white w-screen flex h-16 p-4 flex-row flex-nowrap sticky top-0 z-40">
-    <div class="flex-row flex flex-nowrap flex-1 items-center justify-start">
+  <header class="bg-white w-screen flex h-16 pl-9 p-4 flex-row flex-nowrap sticky top-0 z-40 md:h-24 md:rounded-b-full">
+    <div class="flex-row flex flex-nowrap flex-1 items-center justify-start md:hidden">
       <svg id="btn_mobile_menu" width="16" height="15" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="#69707D"
-          fill-rule="evenodd" />
+        <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="#69707D" fill-rule="evenodd" />
       </svg>
       <h1 class="text-2xl px-5 ">SNEAKERS</h1>
     </div>
+    <!-- Desktop Header -->
+    <div class="hidden
+    md:flex-row md:flex justify-start items-center md:px-5 flex-1">
+      <h1 class="text-2xl px-5 ">SNEAKERS</h1>
+      <ul class="flex flex-row">
+        <a href="#" class="px-3 font-semibold text-black text-xl">Collections</a>
+        <a href="#" class="px-3 font-semibold text-black text-xl">Men</a>
+        <a href="#" class="px-3 font-semibold text-black text-xl">Women</a>
+        <a href="#" class="px-3 font-semibold text-black text-xl">About</a>
+        <a href="#" class="px-3 font-semibold text-black text-xl">Contact</a>
+      </ul>
+    </div>
+    <!-- Desktop Header -->
     <div class="flex-row flex flex-nowrap flex-1  items-center justify-end">
       <button id="cartbtn">
         <svg class="" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -71,82 +89,135 @@
   </header>
   <!-- Header  -->
   <!-- Main -->
-  <main class="pb-9">
+  <main class="pb-9 md:pt-16 md:px-20">
     <!-- Cart -->
-    <div id="cart_bg" class="w-screen h-screen bg-black z-40 absolute top-0 opacity-40 hidden">
+    <div id="cart_bg" class="w-screen h-screen bg-black z-40 absolute top-0 opacity-40 hidden md:bg-transparent">
     </div>
-    <div id="cart" class="absolute z-50  flex-col w-3/4 h-1/3 bg-white ml-[12.5%] mt-5 rounded-3xl p-8 hidden">
-      <h1 class="font-semibold py-5 italic">Cart</h1>
-      <div class="border-t-2 flex justify-center items-center h-3/4">
-        <h1 class="text-xl font-semibold">Your cart is Empty.</h1>
+    <div id="cart"
+      class="absolute z-50 flex-wrap  flex-col w-[80%] h-1/3 bg-white ml-[12.5%] mt-5 rounded-3xl p-8 pb-0 hidden
+      md:w-[30%] md:right-0 md:mr-5 md:top-20 md:border-2 md:border-black">
+      <h1 class="font-semibold py-5 italic border-b-2">Cart</h1>
+      <!-- Empty Cart -->
+      <div id="cartEmpty" class=" flex justify-center items-center h-3/4 ">
+        <h1 class="text-xl font-semibold ">Your cart is Empty.</h1>
       </div>
-    </div>
-    <!-- Cart -->
-    <!-- Images -->
-    <section class="w-[100%] overflow-hidden">
-      <div id="carousel" class=" z-0 w-[200%] flex flex-row flex-nowrap justify-between items-center translate-x-[0%]">
-        <img src="images\image-product-1.jpg" alt="Imagen 1" class="w-[calc(100%/2)] min-h-[10vh]">
-        <img src="images\image-product-2.jpg" alt="Imagen 2" class="w-[calc(100%/2)] min-h-[10vh]">
-        <img src="images\image-product-3.jpg" alt="Imagen 3" class="w-[calc(100%/2)] min-h-[10vh]">
-        <img src="images\image-product-4.jpg" alt="Imagen 4" class="w-[calc(100%/2)] min-h-[10vh]">
-      </div>
-      <div class="w-[100%] flex justify-center flex-nowrap items-center">
-        <div id="previous"
-          class=" z-10 w-[3em] h-[3em] bg-seagreen hover:bg-blue hover:cursor-pointer m-[1em] rounded-full absolute left-0 top-1/4 text-center py-2">
-          <svg class="mx-auto" width="12" height="18" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
+      <!-- Empty Cart -->
+      <!-- Full Cart -->
+      <div id="CartFull" class="flex h-3/4 flex-col items-start justify-start pt-3 hidden">
+        <div class="flex justify-evenly w-[100%] items-center">
+          <div class="w-16 h-16 rounded-full"><img src="images\image-product-1-thumbnail.jpg"></div>
+          <div>
+            <h1 class="text-xl font-normal">Atumn Limited Edition..</h1>
+            <h1 id="itemsCount" class="text-lg font-light flex justify-between">$125x 3</h1>
+            <div>
+              <p id="totalCount" class="font-bold">$375.00</p>
+            </div>
+          </div>
+          <svg width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path
+                d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z"
+                id="a" />
+            </defs>
+            <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
           </svg>
         </div>
-        <div id="next"
-          class="w-[3em] h-[3em] bg-seagreen hover:bg-blue hover:cursor-pointer m-[1em] rounded-full absolute right-0 top-1/4 text-center py-2">
-          <svg class="mx-auto" width="13" height="18" xmlns="http://www.w3.org/2000/svg">
-            <path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
-          </svg>
-        </div>
+        <button
+          class="w-[100%] h-[100%] my-9 bg-orange-500 rounded-3xl font-bold text-white text-xl hover:bg-orange-600 hover:text-black">Chekout</button>
       </div>
-    </section>
-    <!-- Images -->
-    <!-- text-data -->
-    <section class="w-screen px-9 pt-3">
-      <!-- Text -->
-      <article class="flex flex-col">
-        <p class="text-l text-orange-500 font-bold uppercase">sneaker company</p>
-        <h1 class="text-2xl font-bold py-2">Fall Limited Edition Sneakers</h1>
-        <p class="font-thin text-black text-lg">These low-profile sneakers are your perfect casual wear companion.
-          Featuring a
-          durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-      </article>
-      <!-- Text -->
-      <!-- Prices -->
-      <article class="flex items-center">
-        <p class="text-3xl py-4 text-black font-extrabold uppercase">$125.00</p>
-        <p class="ml-4 px-2 text-center font-bold text-orange-700 rounded-md bg-orange-200">50%</p>
-        <p class="line-through text-gray-300 text-xl font-semibold  w-full text-right">$250.00</p>
-      </article>
-      <!-- Prices -->
-    </section>
-    <!-- text-data -->
+      <!-- Full Cart -->
+    </div>
     <!-- Cart -->
-    <section class="flex flex-col pt-3 w-screen px-9">
-      <!-- Counter -->
-      <div class="flex h-12 w-full items-center justify-between px-10  rounded-md bg-pink-100 ">
-        <button class="font-bold hover:cursor-pointer">-</button>
-        <p class="font-bold">0</p>
-        <button class="font-bold hover:cursor-pointer">+</button>
-      </div>
-      <!-- Counter -->
-      <!-- addCart -->
-      <div class="flex bg-orange-500 my-3 items-center justify-center py-4 rounded-lg shadow-lg shadow-orange-200">
-        <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
-            fill="#ffff" fill-rule="nonzero" />
-        </svg>
-        <p class="font-bold text-white pl-3 hover:cursor-pointer">Add to Cart</p>
-      </div>
-      <!-- addCart -->
-    </section>
-    <!-- Cart -->
+    <figure class="md:flex md:flex-row">
+      <article class="hidden md:flex">
+        <!-- Images DESKTOP-->
+        <section class="w-3/4 overflow-hidden">
+          <div class="w-[400%] flex flex-row flex-nowrap justify-between items-center translate-x-[0%]">
+            <img id="masterimg" src="images\image-product-1.jpg" alt="Imagen 1" class="w-[calc(50%/2)] min-h-[10vh]">
+          </div>
+          <div class="p-2 border-x-2 border-black flex my-5 rounded-xl">
+            <img id="img1" class="w-1/4" src="images\image-product-1-thumbnail.jpg">
+            <img id="img2" class="w-1/4 opacity-40" src="images\image-product-2-thumbnail.jpg">
+            <img id="img3" class="w-1/4 opacity-40" src="images\image-product-3-thumbnail.jpg">
+            <img id="img4" class="w-1/4 opacity-40" src="images\image-product-4-thumbnail.jpg">
+          </div>
+        </section>
+        <!-- Images DESKTOP-->
+      </article>
+      <article class="md:hidden">
+        <!-- Images -->
+        <section class="w-[100%] overflow-hidden">
+          <div id="carousel"
+            class=" z-0 w-[200%] flex flex-row flex-nowrap justify-between items-center translate-x-[0%]">
+            <img src="images\image-product-1.jpg" alt="Imagen 1" class="w-[calc(100%/2)] min-h-[10vh]">
+            <img src="images\image-product-2.jpg" alt="Imagen 2" class="w-[calc(100%/2)] min-h-[10vh]">
+            <img src="images\image-product-3.jpg" alt="Imagen 3" class="w-[calc(100%/2)] min-h-[10vh]">
+            <img src="images\image-product-4.jpg" alt="Imagen 4" class="w-[calc(100%/2)] min-h-[10vh]">
+          </div>
+          <div class="w-[100%] flex justify-center flex-nowrap items-center">
+            <div id="previous"
+              class=" z-10 w-[3em] h-[3em] bg-seagreen hover:bg-blue hover:cursor-pointer m-[1em] rounded-full absolute left-0 top-1/4 text-center py-2">
+              <svg class="mx-auto" width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
+              </svg>
+            </div>
+            <div id="next"
+              class="w-[3em] h-[3em] bg-seagreen hover:bg-blue hover:cursor-pointer m-[1em] rounded-full absolute right-0 top-1/4 text-center py-2">
+              <svg class="mx-auto" width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </section>
+        <!-- Images -->
+      </article>
+      <!-- DATA ARTICLE -->
+      <article class="md:flex md:flex-col">
+        <!-- text-data -->
+        <section class="w-screen px-9 pt-3 md:w-3/4">
+          <!-- Text -->
+          <article class="flex flex-col">
+            <p class="text-l text-orange-500 font-bold uppercase">sneaker company</p>
+            <h1 class="text-2xl font-bold py-2">Fall Limited Edition Sneakers</h1>
+            <p class="font-thin text-black text-lg">These low-profile sneakers are your perfect casual wear companion.
+              Featuring a
+              durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          </article>
+          <!-- Text -->
+          <!-- Prices -->
+          <article class="flex items-center">
+            <p class="text-3xl py-4 text-black font-extrabold uppercase">$125.00</p>
+            <p class="ml-4 px-2 text-center font-bold text-orange-700 rounded-md bg-orange-200">50%</p>
+            <p class="line-through text-gray-300 text-xl font-semibold  w-full text-right">$250.00</p>
+          </article>
+          <!-- Prices -->
+        </section>
+        <!-- text-data -->
+        <!-- addCart -->
+        <section class="flex flex-col pt-3 w-screen px-9 md:w-3/4">
+          <!-- Counter -->
+          <div class="flex h-12 w-full items-center justify-between px-10  rounded-md bg-pink-100 ">
+            <button id="btn_cart_remove" class="font-bold hover:cursor-pointer">-</button>
+            <p id="cart_index" class="font-bold">0</p>
+            <button id="btn_cart_add" class="font-bold hover:cursor-pointer">+</button>
+          </div>
+          <!-- Counter -->
+          <!-- btnaddCart -->
+          <button id="btn_addtoCart"
+            class="flex bg-orange-500 my-3 items-center justify-center py-4 rounded-lg shadow-lg shadow-orange-200 active:translate-y-1">
+            <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                fill="#ffff" fill-rule="nonzero" />
+            </svg>
+            <p class="font-bold text-white pl-3 hover:cursor-pointer">Add to Cart</p>
+          </button>
+          <!-- btnaddCart -->
+        </section>
+        <!-- addCart -->
+      </article>
+      <!-- DATA ARTICLE -->
+    </figure>
   </main>
   <!-- Main -->
 </body>
